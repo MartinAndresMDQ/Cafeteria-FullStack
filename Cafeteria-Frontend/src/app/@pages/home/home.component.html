@@ -1,0 +1,30 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <button class="buttonex"  mat-raised-button color="primary" [routerLink]="['/drinks']">
+        <mat-icon>local_cafe</mat-icon><h1>Bebidas</h1>
+      </button>
+  </mat-card>
+</mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <button  class="buttonex" mat-raised-button color="accent" [routerLink]="['/additionals']">
+    <mat-icon>local_drink</mat-icon><h1>Adicionales</h1>
+  </button>
+</mat-card>
+</mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <button class="buttonex" mat-raised-button color="link" [routerLink]="['/orders']">
+        <mat-icon>menu_book</mat-icon><h1>Pedidos</h1>
+      </button>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <button  class="buttonex" mat-raised-button color="warn" [routerLink]="['/support']">
+        <mat-icon>contact_support</mat-icon><h1>Soporte</h1>
+      </button>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
