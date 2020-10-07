@@ -1,0 +1,87 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<div mat-dialog-content>
+  <!-- <p>Nombre</p> -->
+  <mat-form-field>
+    <mat-label>Nombre de Cliente</mat-label>
+    <input matInput [(ngModel)]="data.combination.name" [disabled]="data.view">
+  </mat-form-field>
+
+  <div *ngIf="data.view" >
+  <mat-form-field>
+    <mat-label>Bebida</mat-label>
+    <input matInput [(ngModel)]="data.combination.drink.name" [disabled]="true">
+  </mat-form-field>
+
+  
+  <div *ngFor="let additional of data.combination.additionals; let i = index">
+    <mat-form-field >
+      <mat-label>Adicional {{i+1}}</mat-label>
+      <input matInput [(ngModel)]="data.combination.additionals[i].name" [disabled]="true">
+    </mat-form-field>
+  </div>
+</div>
+
+<div *ngIf="!data.view" >
+  <mat-form-field class="example-full-width" >
+    <input type="text"
+           placeholder="Bebida"
+           aria-label="Number"
+           matInput
+           required="true"
+           [formControl]="myControlDrink"
+           [matAutocomplete]="autoDrink" >
+    <mat-autocomplete [displayWith]="getOptionText" autoActiveFirstOption #autoDrink="matAutocomplete" (optionSelected)='selectDrink($event.option.value)'>
+      <mat-option *ngFor="let optionD of filteredOptionsDrinks | async" [value]="optionD">
+        {{optionD.name}} - {{optionD.price | number: '1.2-2' | currency }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+    <div *ngFor="let additional of data.combination.additionals; let i = index">
+    <mat-form-field class="example-full-width">
+      <input type="text"
+            placeholder="Adicional"
+            aria-label="Number"
+            matInput
+            required="true"
+            [formControl]="myControlAdditional"
+            [matAutocomplete]="autoAdditional" >
+      <mat-autocomplete [displayWith]="getOptionText" autoActiveFirstOption #autoAdditional="matAutocomplete" (optionSelected)='selectAdditional(i,$event.option.value)'>
+        <mat-option *ngFor="let option of filteredOptionsAdditionals | async" [value]="option">
+          {{option.name}} - {{option.price | number: '1.2-2' | currency }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+
+<button mat-raised-button color="primary" (click)="addAdditional()" >
+  <mat-icon>add_circle_outline</mat-icon> Agregar Adicional
+</button>
+
+</div>
+  <!-- <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of optionsDrinks" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete> 
+
+    
+  -->
+<!-- 
+  <mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput
+    type="number" [(ngModel)]="data.drink.price" [isDisabled]="true">
+  </mat-form-field> -->
+<br />
+  <h3>Total: {{data.combination | calcularTotal | number: '1.2-2' | currency}}</h3>
+</div>
+<div mat-dialog-actions *ngIf="!data.view">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="save()" [disabled]="isDisabled()">Agregar</button>
+</div>
+
+<div mat-dialog-actions *ngIf="data.view">
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+</div>

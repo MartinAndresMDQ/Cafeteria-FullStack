@@ -1,0 +1,79 @@
+
+  
+<p>
+  <mat-toolbar color="primary">
+    
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Cafeteria</span>
+    <span class="example-spacer"></span>
+    
+    
+    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button> -->
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>contact_support</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-list>
+      
+      <mat-divider></mat-divider>
+      <mat-list-item>
+          <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/drinks']">
+          <mat-icon>local_cafe</mat-icon>Bebidas
+        </button>
+      </mat-list-item>
+      
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/additionals']">
+        <mat-icon>local_drink</mat-icon>Adicionales
+      </button>
+    </mat-list-item>
+      
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/orders']">
+      <mat-icon>menu_book</mat-icon>Pedidos
+    </button>
+  </mat-list-item>
+
+      <mat-divider></mat-divider>
+        <mat-list-item>
+          
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/support']">
+        <mat-icon>contact_support</mat-icon>Soporte
+      </button>
+
+           </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-drawer>
+
+  <router-outlet></router-outlet>
+
+</mat-drawer-container>
+
+
+
+<!-- <mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+  <mat-drawer-content><router-outlet></router-outlet></mat-drawer-content>
+</mat-drawer-container> -->
+
+
+<!-- <mat-sidenav-container>
+  <mat-sidenav>Start</mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+  

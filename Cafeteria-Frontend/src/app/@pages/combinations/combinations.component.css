@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.example-card {
+  text-align: center;
+}
+
+.example-button-container{
+  text-align: start;
+}
+
+.buscar{ 
+  padding-top: 20px;
+}
