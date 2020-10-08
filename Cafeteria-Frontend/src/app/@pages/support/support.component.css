@@ -1,0 +1,20 @@
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.example-card {
+  padding-top: 10%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.buttonex{
+  width: 90%;
+  height: 90%;
+}
+
+.example-button-container{
+  text-align: start;
+}

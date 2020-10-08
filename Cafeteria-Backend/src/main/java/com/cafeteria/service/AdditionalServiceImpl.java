@@ -13,7 +13,6 @@ import com.cafeteria.model.Additional;
 @Transactional(value = "transactionManager")
 public class AdditionalServiceImpl implements AdditionalService {
 
-//	@Resource(name = "RubroDao")
 	@Autowired
 	private AdditionalDao dao;
 

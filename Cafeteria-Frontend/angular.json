@@ -14,7 +14,9 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "rxjs-compat"
+              "rxjs-compat",
+              "sockjs-client",
+              "stompjs"
            ],
             "outputPath": "dist/Cafeteria-Frontend",
             "index": "src/index.html",

@@ -13,7 +13,6 @@ import com.cafeteria.model.Drink;
 @Transactional(value = "transactionManager")
 public class DrinkServiceImpl implements DrinkService {
 
-//	@Resource(name = "RubroDao")
 	@Autowired
 	private DrinkDao dao;
 

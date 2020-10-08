@@ -1,0 +1,51 @@
+<!-- <input class="form-control" type="text" placeholder="message" [(ngModel)]="input">
+<button class="btn btn-success" (click)="sendMessage()">Send</button>
+<div class="content">
+  <div *ngFor="let msg of messageService.msg">
+    {{msg}}
+  </div>
+</div> -->
+
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #channelInfo mode="side" align="end" [opened]="true" [style.width.px]="270" *ngIf="user != null && user.password">
+    <div layout="column" layout-fill>
+      <mat-toolbar>
+        <span class="md-subhead">#Canales</span>
+        <span flex></span>
+        <!-- <button mat-icon-button (click)="channelInfo.toggle()"><mat-icon>clear</mat-icon></button> -->
+      </mat-toolbar>
+    </div>
+  </mat-sidenav>
+  <div layout="column" layout-fill>
+    <div flex class="mat-content">
+      <mat-card tdMediaToggle="gt-xs" >
+        <mat-list>
+          <ng-template  let-item let-i="index" let-last="last" ngFor [ngForOf]=" messageService.msg">
+            <mat-list-item class="pad-top pad-bottom">
+              <img matListAvatar src="https://api.adorable.io/avatars/285/1@adorable.io.png" />
+              <h3 matLine class="cursor-pointer"> Firstname Lastname <span class="tc-grey-500 md-caption">11:24 AM</span></h3>
+              <div matLine>
+                <div class="text-wrap">
+                  {{item}}
+                </div>
+              </div>
+            </mat-list-item>
+            <!-- <mat-divider *ngIf="!last" mat-inset></mat-divider> -->
+          </ng-template>
+        </mat-list>
+      </mat-card>
+    </div>
+    <mat-card>
+      <div layout="row" layout-align="start center">
+        <mat-form-field class="push-left push-right" flex layout="row" floatPlaceholder="never">
+          <textarea flex matInput placeholder="message" [(ngModel)]="input"></textarea>
+          
+          <!-- <button class="btn btn-success" (click)="sendMessage()">Enviar</button> -->
+        </mat-form-field>
+        <button mat-raised-button color="link" (click)="sendMessage()">
+          <mat-icon>send</mat-icon>Enviar
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</mat-sidenav-container>

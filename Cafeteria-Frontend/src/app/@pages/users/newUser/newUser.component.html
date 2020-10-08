@@ -1,0 +1,28 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>User</mat-label>
+    <input matInput [(ngModel)]="username">
+  </mat-form-field>
+
+  <mat-form-field >
+    <mat-label>Seleccionar Rango</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option value="option0">Cliente</mat-option>
+      <mat-option value="option1">Operador Nivel 1</mat-option>
+      <mat-option value="option2">Supervisor</mat-option>
+      <mat-option value="option3">Gerente</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field *ngIf="selected != 'option0'">
+    <mat-label>Contraseña</mat-label>
+    <input matInput [(ngModel)]="password">
+  </mat-form-field>
+
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Agregar</button>
+</div>

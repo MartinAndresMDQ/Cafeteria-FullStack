@@ -3,7 +3,7 @@
 <p>
   <mat-toolbar color="primary">
     
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+    <button mat-icon-button  (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <span  [routerLink]="['/']">Cafeteria</span>
@@ -27,41 +27,45 @@
       
       <mat-divider></mat-divider>
       <mat-list-item>
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/']">
+          <button mat-icon-button  [routerLink]="['/']">
           <mat-icon>home</mat-icon>Inicio
         </button>
       </mat-list-item>
 
       <mat-divider></mat-divider>
       <mat-list-item>
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/drinks']">
+          <button mat-icon-button  [routerLink]="['/drinks']">
           <mat-icon>local_cafe</mat-icon>Bebidas
         </button>
       </mat-list-item>
       
       <mat-divider></mat-divider>
       <mat-list-item>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/additionals']">
+        <button mat-icon-button  [routerLink]="['/additionals']">
         <mat-icon>local_drink</mat-icon>Adicionales
       </button>
     </mat-list-item>
       
     <mat-divider></mat-divider>
     <mat-list-item>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/orders']">
+      <button mat-icon-button  [routerLink]="['/orders']">
       <mat-icon>menu_book</mat-icon>Pedidos
     </button>
   </mat-list-item>
 
-      <mat-divider></mat-divider>
-        <mat-list-item>
-          
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/support']">
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <button mat-icon-button  [routerLink]="['/support']">
         <mat-icon>contact_support</mat-icon>Soporte
       </button>
-
-           </mat-list-item>
-      <mat-divider></mat-divider>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <button mat-icon-button  [routerLink]="['/users']">
+        <mat-icon>people_alt</mat-icon>Usuarios
+      </button>
+    </mat-list-item>
+    <mat-divider></mat-divider>
     </mat-list>
   </mat-drawer>
 

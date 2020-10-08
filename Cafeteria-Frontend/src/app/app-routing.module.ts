@@ -19,6 +19,14 @@ const routes: Routes = [
       path: 'orders',
       loadChildren: () => import('./@pages/combinations/combinations.module').then(m => m.CombinationsModule),
     },
+    {
+      path: 'support',
+      loadChildren: () => import('./@pages/support/support.module').then(m => m.SupportModule),
+    },
+    {
+      path: 'users',
+      loadChildren: () => import('./@pages/users/users.module').then(m => m.UsersModule),
+    },
     ];
 
 @NgModule({
