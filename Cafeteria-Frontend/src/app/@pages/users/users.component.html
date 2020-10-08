@@ -4,7 +4,6 @@
 <mat-card class="example-card">
   <mat-card-header>
     <mat-card-title>{{title}}</mat-card-title>
-    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
   </mat-card-header>
   <mat-card-content>
     
@@ -13,7 +12,7 @@
         <mat-icon>add_circle_outline</mat-icon>
       </button>
       
-    <mat-form-field class=buscar>
+    <mat-form-field class="buscar">
         <mat-label>Buscar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
       </mat-form-field>
@@ -87,12 +86,8 @@
     
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro "{{input.value}}"</td>
+        <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro {{input.value}}</td>
       </tr>
     </table>
   </mat-card-content>
-  <!-- <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions> -->
 </mat-card>

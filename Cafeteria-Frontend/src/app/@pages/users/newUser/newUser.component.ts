@@ -47,7 +47,7 @@ export class NewUserComponent implements OnInit {
     if (this.selected == 'Client') {
       let client: Client = new Client(this.data.client.id, this.username, false)
 
-      this._userService.save(this.data.client).subscribe(
+      this._userService.save(client).subscribe(
         data => {
 
           this.dialogRef.close(data);

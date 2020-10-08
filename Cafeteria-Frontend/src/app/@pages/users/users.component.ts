@@ -55,8 +55,6 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.TraerTodo();
-        // this.datos.push(result);
-        // this.dataSource = new MatTableDataSource(this.datos);
       }
     });
 
