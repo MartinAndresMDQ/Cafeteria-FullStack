@@ -6,12 +6,13 @@
     <input matInput [(ngModel)]="username">
   </mat-form-field>
   
-  <button mat-button (click)="verPass=true">Entrar como Soporte</button>
-
   <mat-form-field *ngIf="verPass">
     <mat-label>Contraseña</mat-label>
     <input matInput [(ngModel)]="password">
   </mat-form-field>
+
+  <button mat-button (click)="verPass=true" *ngIf="!verPass">Entrar como Soporte</button>
+
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancelar</button>

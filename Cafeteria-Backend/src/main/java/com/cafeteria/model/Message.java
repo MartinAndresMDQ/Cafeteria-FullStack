@@ -1,86 +1,64 @@
 package com.cafeteria.model;
 
-import java.text.ParseException;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-@Table(name = "message")
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@Entity
+//@Table(name = "message")
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Message {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonProperty("id")
-	private int id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@JsonProperty("id")
+//	private int id;
 
-	@Column(name = "fecha", columnDefinition = "DATETIME")
-	@Temporal(TemporalType.TIMESTAMP)
-	@JsonProperty("fecha")
-	private Date fecha;
+//	@Column(name = "fecha", columnDefinition = "DATETIME")
+//	@Temporal(TemporalType.TIMESTAMP)
+	@JsonProperty("date")
+	private Date date;
 
-	@Column(name = "message")
+//	@Column(name = "message")
 	@JsonProperty("message")
 	private String message;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonProperty("envia")
-	@JoinColumn(name = "envia_id", nullable = false)
-	private Client envia;
+//	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonProperty("fromId")
+//	@JoinColumn(name = "envia_id", nullable = false)
+	private String fromId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonProperty("recibe")
-	@JoinColumn(name = "recibe_id", nullable = false)
-	private Client recibe;
+//	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonProperty("toId")
+//	@JoinColumn(name = "recibe_id", nullable = false)
+	private String toId;
 
-	@Column(name = "visto")
-	@JsonProperty("visto")
-	private Boolean visto;
+//	@Column(name = "visto")
+//	@JsonProperty("visto")
+//	private Boolean visto;
 
 	public Message() {
 		super();
 	}
 
-	public Message(@JsonProperty("id") int id, @JsonProperty("fecha") Date fecha,
-			@JsonProperty("mensaje") String message, @JsonProperty("envia") Client envia,
-			@JsonProperty("recibe") Client recibe, @JsonProperty("visto") Boolean visto) throws ParseException {
+	public Message(@JsonProperty("date") String message, @JsonProperty("fromId") String fromId,
+			@JsonProperty("toId") String toId, @JsonProperty("date") Date date) {
 		super();
-		this.id = id;
-		this.fecha = fecha;
+		this.date = date;
 		this.message = message;
-		this.envia = envia;
-		this.recibe = recibe;
-		this.visto = visto;
+		this.fromId = fromId;
+		this.toId = toId;
 	}
 
 	@JsonIgnore
-	public int getId() {
-		return id;
+	public Date getDate() {
+		return date;
 	}
 
 	@JsonIgnore
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	@JsonIgnore
-	public Date getFecha() {
-		return fecha;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	@JsonIgnore
@@ -94,37 +72,28 @@ public class Message {
 	}
 
 	@JsonIgnore
-	public Client getEnvia() {
-		return envia;
+	public String getFromId() {
+		return fromId;
 	}
 
 	@JsonIgnore
-	public void setEnvia(Client envia) {
-		this.envia = envia;
+	public void setFromId(String fromId) {
+		this.fromId = fromId;
 	}
 
 	@JsonIgnore
-	public Client getRecibe() {
-		return recibe;
+	public String getToId() {
+		return toId;
 	}
 
 	@JsonIgnore
-	public void setRecibe(Client recibe) {
-		this.recibe = recibe;
+	public void setToId(String toId) {
+		this.toId = toId;
 	}
 
-	@JsonIgnore
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	@Override
+	public String toString() {
+		return "Message [date=" + date + ", message=" + message + ", fromId=" + fromId + ", toId=" + toId + "]";
 	}
 
-	@JsonIgnore
-	public Boolean getVisto() {
-		return visto;
-	}
-
-	@JsonIgnore
-	public void setVisto(Boolean visto) {
-		this.visto = visto;
-	}
 }

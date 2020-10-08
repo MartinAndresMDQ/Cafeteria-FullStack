@@ -14,8 +14,8 @@ export class ClientService extends ServiceGeneric<Client> {
         this.newURL = this.newURL + 'client';
     }
     
-    getSupport(): Observable<Client> {
-      return this.http.get<Client>(this.newURL + '/getSupport', this.options)
+    getSupport(id): Observable<Client> {
+      return this.http.get<Client>(this.newURL + '/getSupport/'+id, this.options)
         .pipe(
           catchError(this.handleError)
         );
@@ -24,7 +24,7 @@ export class ClientService extends ServiceGeneric<Client> {
     login(username: string,password?:string|""): Observable<Client> {
         // const body = new Client()`username=${username}&password=${password}`;
 
-        let json = JSON.stringify(new Operator(0,username,false,password));
+        let json = JSON.stringify(new Operator(0,username,false,false,password));
       return this.http.post<Client>(this.newURL + '/login',json, this.optionsPost)
         .pipe(
           catchError(this.handleError)
@@ -33,15 +33,28 @@ export class ClientService extends ServiceGeneric<Client> {
     
     
     loginClient(username: string): Observable<Client> {
-        // const body = new Client()`username=${username}&password=${password}`;
+      // const body = new Client()`username=${username}&password=${password}`;
 
-        let json = JSON.stringify(new Client(0,username,false));
-      return this.http.post<Client>(this.newURL + '/loginClient',json, this.optionsPost)
-        .pipe(
-          catchError(this.handleError)
-        );
-    }
+      let json = JSON.stringify(new Client(0,username,false));
+    return this.http.post<Client>(this.newURL + '/loginClient',json, this.optionsPost)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
+  disconnect(id,idResp): Observable<Client> {
+    return this.http.get<Client>(this.newURL + '/disconnect/'+id+'/'+idResp, this.optionsPost)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getClientsOnline(): Observable<Client[]> {
+    return this.http.get<Client[]>(this.newURL + '/getClientsOnline/', this.optionsPost)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
     
   saveOperator(data: Operator): Observable<Operator> {
     let json = JSON.stringify(data);

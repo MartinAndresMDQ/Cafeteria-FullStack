@@ -1,23 +1,26 @@
-import { Client } from './client';
+// import { Client } from './client';
 
+// export interface Message {
+//     message: string;
+//     fromId: string;
+//     toId: string;
+//     date: Date;
+//   }
+
+  
 export class Message {
-    public id: number;
     public message: string;
-    public fecha: Date;
-    public envia: Client;
-    public recibe: Client;
-    public visto: boolean;
-    constructor(id?: number,
+    public fromId: string;
+    public toId: string;
+    public date: Date;
+    constructor(
         message?: string,
-        fecha?: Date,
-        envia?: Client,
-        recibe?: Client,
-        visto?: boolean) {
-        this.id = id || 0;
-        this.message = message || "";
-        this.fecha = fecha || new Date();
-        this.envia = envia || null;
-        this.recibe = recibe || null;
-        this.visto = visto || false;
+        fromId?: string,
+        toId?: string,
+        date?: Date) {
+            this.message = message || "";
+            this.fromId = fromId || "";
+            this.toId = toId || "";
+        this.date = date || new Date();
     }
 }

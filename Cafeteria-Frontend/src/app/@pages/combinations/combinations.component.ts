@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 // import { Router } from '@angular/router';
 import { AdditionalService, DrinkService, CombinationService } from '@services';
 import {MatTableDataSource} from '@angular/material/table';
@@ -11,7 +11,7 @@ import { Combination } from '@model';
   styleUrls: ['./combinations.component.css'],
   templateUrl: './combinations.component.html'
 })
-export class CombinationsComponent {
+export class CombinationsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'fecha', 'name', 'edit','descripcion','total'];
   public dataSource = new MatTableDataSource([]);
@@ -34,7 +34,6 @@ export class CombinationsComponent {
       this.title = 'Pedidos';
       this._combinationService.getAlls().subscribe(
         data => {
-          console.log(data);
           this.datos = data;
           this.dataSource = new MatTableDataSource(data);
         },
@@ -59,7 +58,6 @@ export class CombinationsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if(result)
       {
         this.datos.push(result);
@@ -70,23 +68,19 @@ export class CombinationsComponent {
   }
 
   edit(element){
-    console.log(element)
     const dialogRef = this.dialog.open(NewCombinationComponent, {
       width: '250px',
       data: {combination:element, view:true}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if(result)
         this.TraerTodo();
     });
     
   }
 
-  delete(element){
-    console.log(element)
-    
+  delete(element){    
     this._combinationService.delete(element.id).subscribe(
       data => {
         this.TraerTodo();

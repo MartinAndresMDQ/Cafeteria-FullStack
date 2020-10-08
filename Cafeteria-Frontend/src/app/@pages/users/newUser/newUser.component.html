@@ -8,17 +8,35 @@
   <mat-form-field >
     <mat-label>Seleccionar Rango</mat-label>
     <mat-select [(value)]="selected">
-      <mat-option value="option0">Cliente</mat-option>
-      <mat-option value="option1">Operador Nivel 1</mat-option>
-      <mat-option value="option2">Supervisor</mat-option>
-      <mat-option value="option3">Gerente</mat-option>
+      <mat-option value="Client">Cliente</mat-option>
+      <mat-option value="Operator">Operador Nivel 1</mat-option>
+      <mat-option value="Supervisor">Supervisor</mat-option>
+      <mat-option value="Manager">Gerente</mat-option>
     </mat-select>
   </mat-form-field>
   
-  <mat-form-field *ngIf="selected != 'option0'">
+  <mat-form-field *ngIf="selected != 'Client'">
     <mat-label>Contraseña</mat-label>
     <input matInput [(ngModel)]="password">
   </mat-form-field>
+  
+  <section class="example-section" *ngIf="selected != 'Client'">
+    <mat-slide-toggle
+        class="example-margin"
+        [color]="'primary'"
+        [checked]="online">
+      online
+    </mat-slide-toggle>
+  </section>
+  
+  <section class="example-section" *ngIf="selected != 'Client'">
+    <mat-slide-toggle
+        class="example-margin"
+        [color]="'primary'"
+        [(ngModel)]="available">
+      Disponible
+    </mat-slide-toggle>
+  </section>
 
 
 </div>

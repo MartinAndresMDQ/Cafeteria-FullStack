@@ -1,7 +1,7 @@
-import {Component, Inject} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientService } from '@services';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { NewUserComponent } from './newUser';
 import { Client, Operator } from '@model';
@@ -11,16 +11,15 @@ import { Client, Operator } from '@model';
   styleUrls: ['./users.component.css'],
   templateUrl: './users.component.html'
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'password', 'online', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'level', 'name', 'password', 'online', 'available', 'edit', 'delete'];
   public dataSource = new MatTableDataSource([]);
   public title = 'Usuarios';
-  // public isUser = true;
   public datos = [];
 
   constructor(@Inject(ClientService) private _clientService: ClientService,
-  public dialog: MatDialog,
+    public dialog: MatDialog,
     private router: Router) {
   }
 
@@ -29,13 +28,9 @@ export class UsersComponent {
 
   }
 
-  TraerTodo(){
-
-      // this.title = 'Adicionales';
-      // this.isUser = false;
+  TraerTodo() {
     this._clientService.getAlls().subscribe(
       data => {
-        console.log(data);
         this.datos = data;
         this.dataSource = new MatTableDataSource(data);
       },
@@ -45,47 +40,42 @@ export class UsersComponent {
       });
   }
 
-  public data
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  new(){
-
+  new() {
     const dialogRef = this.dialog.open(NewUserComponent, {
-      width: '250px',
-      data: { client:new Client(),isNew:true }
+      width: '270px',
+      data: { client: new Client(), isNew: true }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      if(result)
-      {
-        this.datos.push(result);
-        this.dataSource = new MatTableDataSource(this.datos);
+      if (result) {
+        this.TraerTodo();
+        // this.datos.push(result);
+        // this.dataSource = new MatTableDataSource(this.datos);
       }
     });
-    
+
   }
 
-  edit(element){
+  edit(element) {
     const dialogRef = this.dialog.open(NewUserComponent, {
-      width: '250px',
-      data: { client:element,isNew:false }
+      width: '270px',
+      data: { client: element, isNew: false }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      if(result)
+      if (result)
         this.TraerTodo();
     });
-    
+
   }
 
-  delete(element){
-    console.log(element)
+  delete(element) {
     this._clientService.delete(element.id).subscribe(
       data => {
         this.TraerTodo();

@@ -85,8 +85,6 @@ export class NewCombinationComponent implements OnInit {
           startWith(''),
           map(value => this._filterDrink(value))
         );
-
-        console.log(data);
       },
       error => {
         window.alert(error);
@@ -112,10 +110,8 @@ export class NewCombinationComponent implements OnInit {
   }
 
   save(){
-    console.log(this.data.combination)
     this._combinationService.save(this.data.combination).subscribe(
       data => {
-        console.log(data)
         this.data.combination = data;
         // this.dialogRef.close(data);
         this.data.view = true;

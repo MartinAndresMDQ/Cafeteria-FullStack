@@ -1,5 +1,7 @@
 package com.cafeteria.dao;
 
+import java.util.List;
+
 import com.cafeteria.model.Client;
 import com.cafeteria.model.Manager;
 import com.cafeteria.model.Operator;
@@ -20,5 +22,11 @@ public interface ClientDao extends GenericDAO<Client> {
 	Manager saveOrUpdateManager(Manager dato);
 
 	Client getUser(String name);
+
+	Client getSupport(String name, String password);
+
+	List<Client> getClientsOnline();
+
+	Operator getOperator(int idR);
 
 }

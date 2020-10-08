@@ -22,8 +22,8 @@ public class ClientDaoImpl extends GenericDAOImpl<Client> implements ClientDao {
 		CriteriaBuilder cb = getsessionFactory().getCriteriaBuilder();
 		CriteriaQuery<Operator> cq = cb.createQuery(Operator.class);
 		Root<Operator> root = cq.from(Operator.class);
-		cq.where(cb.and(cb.equal(root.get("online"), true), cb.equal(root.get("DTYPE"), "Operator")))
-				.orderBy(cb.asc(root.get("id"))).distinct(true);
+		cq.where(cb.and(cb.equal(root.get("online"), true), cb.equal(root.get("available"), true),
+				cb.equal(root.get("DTYPE"), "Operator"))).orderBy(cb.asc(root.get("id"))).distinct(true);
 
 		List<Operator> objects = this.getsessionFactory().createQuery(cq)
 				// .setFirstResult(desde) // offset
@@ -41,8 +41,8 @@ public class ClientDaoImpl extends GenericDAOImpl<Client> implements ClientDao {
 		CriteriaBuilder cb = getsessionFactory().getCriteriaBuilder();
 		CriteriaQuery<Supervisor> cq = cb.createQuery(Supervisor.class);
 		Root<Supervisor> root = cq.from(Supervisor.class);
-		cq.where(cb.and(cb.equal(root.get("online"), true), cb.equal(root.get("DTYPE"), "Supervisor")))
-				.orderBy(cb.asc(root.get("id"))).distinct(true);
+		cq.where(cb.and(cb.equal(root.get("online"), true), cb.equal(root.get("available"), true),
+				cb.equal(root.get("DTYPE"), "Supervisor"))).orderBy(cb.asc(root.get("id"))).distinct(true);
 
 		List<Supervisor> objects = this.getsessionFactory().createQuery(cq)
 				// .setFirstResult(desde) // offset
@@ -60,8 +60,8 @@ public class ClientDaoImpl extends GenericDAOImpl<Client> implements ClientDao {
 		CriteriaBuilder cb = getsessionFactory().getCriteriaBuilder();
 		CriteriaQuery<Manager> cq = cb.createQuery(Manager.class);
 		Root<Manager> root = cq.from(Manager.class);
-		cq.where(cb.and(cb.equal(root.get("online"), true), cb.equal(root.get("DTYPE"), "Manager")))
-				.orderBy(cb.asc(root.get("id"))).distinct(true);
+		cq.where(cb.and(cb.equal(root.get("online"), true), cb.equal(root.get("available"), true),
+				cb.equal(root.get("DTYPE"), "Manager"))).orderBy(cb.asc(root.get("id"))).distinct(true);
 
 		List<Manager> objects = this.getsessionFactory().createQuery(cq)
 				// .setFirstResult(desde) // offset
@@ -97,6 +97,52 @@ public class ClientDaoImpl extends GenericDAOImpl<Client> implements ClientDao {
 
 		List<Client> objects = this.getsessionFactory().createQuery(cq).getResultList();
 		Client client = null;
+		if (objects.size() != 0)
+			client = objects.get(0);
+		return client;
+	}
+
+	@Override
+	public Client getSupport(String name, String password) {
+		CriteriaBuilder cb = getsessionFactory().getCriteriaBuilder();
+		CriteriaQuery<Operator> cq = cb.createQuery(Operator.class);
+		Root<Operator> root = cq.from(Operator.class);
+		cq.where(cb.and(cb.equal(root.get("name"), name), cb.equal(root.get("password"), password))).distinct(true);
+
+		List<Operator> objects = this.getsessionFactory().createQuery(cq).getResultList();
+		Client client = null;
+		if (objects.size() != 0)
+			client = objects.get(0);
+		return client;
+	}
+
+	@Override
+	public List<Client> getClientsOnline() {
+
+		CriteriaBuilder cb = getsessionFactory().getCriteriaBuilder();
+		CriteriaQuery<Client> cq = cb.createQuery(Client.class);
+		Root<Client> root = cq.from(Client.class);
+		cq.where(cb.and(cb.equal(root.get("online"), true), cb.equal(root.get("DTYPE"), "Client")))
+				.orderBy(cb.asc(root.get("id"))).distinct(true);
+
+		List<Client> clients = this.getsessionFactory().createQuery(cq)
+				// .setFirstResult(desde) // offset
+				// .setMaxResults(hasta) // limit
+				.getResultList();
+		return clients;
+	}
+
+	@Override
+	public Operator getOperator(int idR) {
+
+		CriteriaBuilder cb = getsessionFactory().getCriteriaBuilder();
+		CriteriaQuery<Operator> cq = cb.createQuery(Operator.class);
+		Root<Operator> root = cq.from(Operator.class);
+		cq.where(cb.and(cb.equal(root.get("id"), idR), cb.notEqual(root.get("DTYPE"), "Client")))
+				.orderBy(cb.asc(root.get("id"))).distinct(true);
+
+		List<Operator> objects = this.getsessionFactory().createQuery(cq).getResultList();
+		Operator client = null;
 		if (objects.size() != 0)
 			client = objects.get(0);
 		return client;

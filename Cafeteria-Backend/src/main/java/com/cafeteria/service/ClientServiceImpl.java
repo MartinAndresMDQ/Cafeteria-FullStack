@@ -95,4 +95,22 @@ public class ClientServiceImpl implements ClientService {
 		// TODO Auto-generated method stub
 		return dao.getUser(name);
 	}
+
+	@Override
+	public Client getSupport(String name, String password) {
+		// TODO Auto-generated method stub
+		return dao.getSupport(name, password);
+	}
+
+	@Override
+	public List<Client> getClientsOnline() {
+		// TODO Auto-generated method stub
+		return dao.getClientsOnline();
+	}
+
+	@Override
+	public Operator getOperator(int idR) {
+		// TODO Auto-generated method stub
+		return dao.getOperator(idR);
+	}
 }

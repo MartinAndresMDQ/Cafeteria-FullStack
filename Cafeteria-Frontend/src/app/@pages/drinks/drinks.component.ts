@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { AdditionalService, DrinkService } from '@services';
 import {MatTableDataSource} from '@angular/material/table';
@@ -11,7 +11,7 @@ import { Additional, Drink } from '@model';
   styleUrls: ['./drinks.component.css'],
   templateUrl: './drinks.component.html'
 })
-export class DrinksComponent {
+export class DrinksComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'price', 'edit', 'delete'];
   public dataSource = new MatTableDataSource([]);
@@ -49,7 +49,6 @@ export class DrinksComponent {
       this.title = 'Bebidas';
       this._drinkService.getAlls().subscribe(
         data => {
-          console.log(data);
           this.datos = data;
           this.dataSource = new MatTableDataSource(data);
         },
@@ -75,7 +74,6 @@ export class DrinksComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if(result)
       {
         this.datos.push(result);
@@ -93,16 +91,13 @@ export class DrinksComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if(result)
         this.TraerTodo();
     });
     
   }
 
-  delete(element){
-    console.log(element)
-    
+  delete(element){    
     this._drinkService.delete(element.id).subscribe(
       data => {
         this.TraerTodo();

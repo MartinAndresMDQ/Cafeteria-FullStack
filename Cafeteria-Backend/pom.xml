@@ -47,7 +47,7 @@
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
 		</dependency>
-
+		<!---->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -72,19 +72,19 @@
 			<artifactId>hibernate-core</artifactId>
 		</dependency>
 		
-		<!-- Hibernate-C3P0 Integration -->
+		<!-- Hibernate-C3P0 Integration 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 		</dependency>
-		
-		<!-- c3p0 -->
+		-->
+		<!-- c3p0 
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
 			<version>0.9.5.2</version>
 		</dependency>
-		
+		-->
 		<!-- Mysql Connector -->
 		<dependency>
 			<groupId>mysql</groupId>

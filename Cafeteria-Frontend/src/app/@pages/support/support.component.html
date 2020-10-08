@@ -7,26 +7,28 @@
 </div> -->
 
 <mat-sidenav-container fullscreen>
-  <mat-sidenav #channelInfo mode="side" align="end" [opened]="true" [style.width.px]="270" *ngIf="user != null && user.password">
-    <div layout="column" layout-fill>
-      <mat-toolbar>
-        <span class="md-subhead">#Canales</span>
-        <span flex></span>
-        <!-- <button mat-icon-button (click)="channelInfo.toggle()"><mat-icon>clear</mat-icon></button> -->
-      </mat-toolbar>
-    </div>
-  </mat-sidenav>
   <div layout="column" layout-fill>
     <div flex class="mat-content">
       <mat-card tdMediaToggle="gt-xs" >
         <mat-list>
-          <ng-template  let-item let-i="index" let-last="last" ngFor [ngForOf]=" messageService.msg">
-            <mat-list-item class="pad-top pad-bottom">
-              <img matListAvatar src="https://api.adorable.io/avatars/285/1@adorable.io.png" />
-              <h3 matLine class="cursor-pointer"> Firstname Lastname <span class="tc-grey-500 md-caption">11:24 AM</span></h3>
+          <ng-template  let-item let-i="index" let-last="last" ngFor [ngForOf]="messageService.msg">
+            <mat-list-item  class="left" *ngIf="responde==null || responde.id==item.fromId">
+              <!-- <img matListAvatar src="https://api.adorable.io/avatars/285/1@adorable.io.png" /> -->
+              <h3 matLine class="cursor-pointer">{{ responde?.name || 'Sistema' }}<span class="tc-grey-500 md-caption"> - {{ item.date | date: 'dd/MM/yyyy h:mm a'}}</span></h3>
               <div matLine>
                 <div class="text-wrap">
-                  {{item}}
+                  {{item.message}}
+                </div>
+              </div>
+            </mat-list-item>
+
+            <mat-list-item  class="right"  *ngIf="user.id==item.fromId">
+              <h3 matLine class="cursor-pointer">{{ user.name }}<span class="tc-grey-500 md-caption"> - {{ item.date | date: 'dd/MM/yyyy h:mm a'}}</span></h3>
+              
+              <!-- <img matListAvatar src="https://api.adorable.io/avatars/285/1@adorable.io.png" /> -->
+              <div matLine>
+                <div class="text-wrap">
+                  {{item.message}}
                 </div>
               </div>
             </mat-list-item>
@@ -42,8 +44,11 @@
           
           <!-- <button class="btn btn-success" (click)="sendMessage()">Enviar</button> -->
         </mat-form-field>
-        <button mat-raised-button color="link" (click)="sendMessage()">
+        <button mat-raised-button color="link" (click)="sendMessage()" [disabled]="!disponible">
           <mat-icon>send</mat-icon>Enviar
+        </button>
+        <button mat-raised-button color="warn" (click)="disconnect()">
+          <mat-icon>no_meeting_room</mat-icon>Desconectar
         </button>
       </div>
     </mat-card>

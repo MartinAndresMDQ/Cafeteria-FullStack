@@ -18,3 +18,25 @@
 .example-button-container{
   text-align: start;
 }
+
+/* LEFT align */
+.mat-list .mat-list-item.left{
+  justify-content: flex-start;
+}
+
+/* RIGHT align */
+.mat-list .mat-list-item.right{
+  justify-content: flex-end!important;
+  text-align-last: right!important;
+}
+
+/* If you will use matLine */
+
+/* LEFT align */
+.mat-list .mat-list-item.left{
+margin: 0 auto 0 0;
+}
+/* RIGHT align */
+.mat-list .mat-list-item.right{
+margin: 0 0 0 auto;
+}

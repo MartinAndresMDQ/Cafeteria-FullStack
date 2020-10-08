@@ -71,12 +71,24 @@ public class Client {
 		this.name = name;
 	}
 
+	@JsonIgnore
 	public Boolean getOnline() {
 		return online;
 	}
 
+	@JsonIgnore
 	public void setOnline(Boolean online) {
 		this.online = online;
+	}
+
+	@JsonIgnore
+	public String getDTYPE() {
+		return DTYPE;
+	}
+
+	@JsonIgnore
+	public void setDTYPE(String dTYPE) {
+		DTYPE = dTYPE;
 	}
 
 	@Override

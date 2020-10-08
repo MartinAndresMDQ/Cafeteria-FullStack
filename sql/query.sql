@@ -29,6 +29,28 @@ CREATE TABLE `additional_order` (
 
 /*Data for the table `additional_order` */
 
+/*Table structure for table `client` */
+
+DROP TABLE IF EXISTS `client`;
+
+CREATE TABLE `client` (
+  `DTYPE` varchar(31) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `online` tinyint(4) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `client` */
+
+insert  into `client`(`DTYPE`,`id`,`name`,`online`) values 
+('Operator',1,'Martin',0),
+('Supervisor',2,'Lautaro',0),
+('Manager',3,'Laura',0),
+('Supervisor',4,'Matias',0),
+('Operator',5,'Sabrina',0),
+('Manager',6,'German',0);
+
 /*Table structure for table `combination` */
 
 DROP TABLE IF EXISTS `combination`;
@@ -66,6 +88,59 @@ insert  into `drink`(`DTYPE`,`id`,`hidden`,`name`,`price`) values
 ('Additional',4,0,'Cacao',10.00),
 ('Additional',5,0,'Chocolate',15.00),
 ('Additional',6,0,'Ron',20.00);
+
+/*Table structure for table `manager` */
+
+DROP TABLE IF EXISTS `manager`;
+
+CREATE TABLE `manager` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `manager` */
+
+insert  into `manager`(`id`) values 
+(3),
+(6);
+
+/*Table structure for table `operator` */
+
+DROP TABLE IF EXISTS `operator`;
+
+CREATE TABLE `operator` (
+  `available` tinyint(4) DEFAULT 0,
+  `password` varchar(255) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `operator` */
+
+insert  into `operator`(`available`,`password`,`id`) values 
+(0,'123',1),
+(0,'123',2),
+(0,'123',3),
+(0,'123',4),
+(0,'123',5),
+(0,'123',6);
+
+/*Table structure for table `supervisor` */
+
+DROP TABLE IF EXISTS `supervisor`;
+
+CREATE TABLE `supervisor` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `supervisor` */
+
+insert  into `supervisor`(`id`) values 
+(2),
+(3),
+(4),
+(6);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

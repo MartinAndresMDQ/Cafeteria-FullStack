@@ -15,8 +15,9 @@ public class Supervisor extends Operator {
 	}
 
 	public Supervisor(@JsonProperty("id") int id, @JsonProperty("name") String name,
-			@JsonProperty("online") Boolean online, @JsonProperty("password") String password) {
-		super(id, name, online, password);
+			@JsonProperty("online") Boolean online, @JsonProperty("available") Boolean available,
+			@JsonProperty("password") String password) {
+		super(id, name, online, available, password);
 	}
 
 }
