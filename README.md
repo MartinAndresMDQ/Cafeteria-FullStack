@@ -14,18 +14,19 @@ Asegúrese de tener esto instalado antes de continuar
 - Mysql or MariaDB
 
 ## Instalacion
-1 -Crear Base de Datos en Mysql con nombre "cafeteria"
-2 -Ejecutar sql/Query.sql
-3 -
-* Para instalar y ejecutar este proyecto, simplemente escriba y ejecute en Cafeteria-Frontend
+*1 -Crear Base de Datos en Mysql con nombre "cafeteria".
+
+*2 -Ejecutar sql/Query.sql.
+
+*3 - Para instalar y ejecutar este proyecto, simplemente escriba y ejecute en Cafeteria-Frontend
 ```bash
 npm install
 ```
-
+.
 * Instalar repositorios Maven de Cafeteria-Backend en Eclipse o STS
 
-4 - Ejecutar Spring Boot Cafeteria-Backend
-5 - Ejecutar Cafeteria-Frontend
+* 4 - Ejecutar Spring Boot Cafeteria-Backend
+* 5 - Ejecutar Cafeteria-Frontend
 ```bash
 ng serve
 ```
