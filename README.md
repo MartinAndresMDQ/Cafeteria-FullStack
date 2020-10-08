@@ -13,10 +13,10 @@ Asegúrese de tener esto instalado antes de continuar
 - Angular-cli 10.1.4
 - Mysql or MariaDB
 
-## Instalacion
-*1 -Crear Base de Datos en Mysql con nombre "cafeteria".
+## Instalación
+*1 -Crear Base de Datos en MySQL con nombre "cafetería".
 
-*2 -Ejecutar sql/Query.sql.
+*2 -Ejecutar sql/query.sql.
 
 *3 - Para instalar y ejecutar este proyecto, simplemente escriba y ejecute en Cafeteria-Frontend
 ```bash
@@ -34,15 +34,15 @@ ng serve
 
 ## Funcionamiento del Ejercicio 1:
 
-* En la secccion de Usuarios se pueden ver los distintos Usuarios con los 4 roles pedidos (Operador, Supervisor, Gerente, Cliente), se pueden agregar, editar y eliminar los mismos, 
-* Se les puede cambiar el estado de online (que este conectado) y disponible (que no este ocupado),
-* Al momento de ir a la seccion Soporte pide un usuario (si es un cliente puede ingresar con uno ya existente o sino crea uno nuevo sin ir a otra seccion), o ingresar como soporte con la contraseña asignada
-* Si inicia sesion como soporte automaticamente se va a cambiar el estado del usuario a Online y Disponible, 
+* En la sección de Usuarios se pueden ver los distintos Usuarios con los 4 roles pedidos (Operador, Supervisor, Gerente, Cliente), se pueden agregar, editar y eliminar los mismos, 
+* Se les puede cambiar el estado de online (que esté conectado) y disponible (que no esté ocupado),
+* Al momento de ir a la sección Soporte pide un usuario (si es un cliente puede ingresar con uno ya existente o sino crea uno nuevo sin ir a otra sección), o ingresar como soporte con la contraseña asignada
+* Si inicia sesión como soporte automáticamente se va a cambiar el estado del usuario a Online y Disponible, 
 * Cuando comienza el chat con un cliente este cambia su estado de disponible = false y cuando presiona Desconectar cambiar el estado de Online=false 
-* pero cuando presiona Desconectar un Cliente se va a cambiar solo el estado Disponible = true del soporte que estaba atendiendolo...
+* pero cuando presiona Desconectar un Cliente se va a cambiar solo el estado Disponible = true del soporte que estaba atendiéndolo...
 
 
 ## Funcionamiento del Ejercicio 2:
 
-* Tanto en la seccion Bebidas como Adicionales se pueden cargar, editar, y eliminar la carga de datos con sus respectivos precios.
-* En la seccion de Pedidos se pueden crear y ver ordenes de 1 bebida con los adicionales que se quieran agregar, calculando el total al final del formulario
+* Tanto en la sección Bebidas como Adicionales se pueden cargar, editar, y eliminar la carga de datos con sus respectivos precios.
+* En la sección de Pedidos se pueden crear y ver ordenes de 1 bebida con los adicionales que se quieran agregar, calculando el total al final del formulario
